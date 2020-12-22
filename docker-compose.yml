@@ -1,0 +1,21 @@
+version: '3.6'
+services: 
+    db: 
+        
+            image: postgres
+            restart: always
+            volumes:
+                - ./database_mount:/var/lib/postgresql/data
+            environment:
+                POSTGRES_PASSWORD: afifa
+    webserver:
+        
+            image: node
+            volumes: 
+                - ./webserver_mount:/usr/app/
+            ports: 
+                - "8888:3000" 
+    adminer:
+            image: adminer
+            ports: 
+                - 8080:8080
